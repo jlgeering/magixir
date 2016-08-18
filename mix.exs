@@ -5,6 +5,8 @@ defmodule Magixir.Mixfile do
     [app: :magixir,
      version: "0.1.0",
      elixir: "~> 1.3",
+     description: description(),
+     package: package(),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
@@ -27,6 +29,20 @@ defmodule Magixir.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:ex_doc, "~> 0.13.0", only: :dev}]
+  end
+
+  defp description do
+    """
+    Magento Elixir Tools.
+    """
+  end
+
+  defp package do
+    [
+      licenses:    ["MIT"],
+      maintainers: ["Jean-Luc Geering"],
+      links:       %{"GitHub" => "https://github.com/jlgeering/magixir" }
+    ]
   end
 end
