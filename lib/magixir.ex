@@ -1,0 +1,2 @@
+defmodule Magixir do
+end
