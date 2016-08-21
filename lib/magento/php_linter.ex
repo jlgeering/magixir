@@ -1,6 +1,7 @@
 defmodule Magento.PhpLinter do
 
-  def find_bad_files(magento_root) do
+  # Warning: this is very super slow
+  def lint(magento_root) do
     File.cd!(magento_root, &find_bad_files/0)
   end
 

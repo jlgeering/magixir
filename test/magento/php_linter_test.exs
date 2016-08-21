@@ -5,12 +5,12 @@ defmodule Magento.PhpLinterTest do
   @fixtures Path.join(__DIR__, "../fixtures")
 
   test "no warnings for valid files" do
-    files = Magento.PhpLinter.find_bad_files(Path.join(@fixtures, "magento"))
+    files = Magento.PhpLinter.lint(Path.join(@fixtures, "magento"))
     assert files == []
   end
 
   test "find all files that do not start with <?php" do
-    files = Magento.PhpLinter.find_bad_files(Path.join(@fixtures, "php_linter"))
+    files = Magento.PhpLinter.lint(Path.join(@fixtures, "php_linter"))
     expected = MapSet.new [
       "space.php",
       "a/space.php",
