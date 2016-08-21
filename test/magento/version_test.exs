@@ -5,12 +5,12 @@ defmodule Magento.VersionTest do
   @fixtures Path.join(__DIR__, "../fixtures")
 
   # Magento Community Edition
-  @magento_root_1_0      Path.join(@fixtures, "magento_1.0")
-  @magento_root_1_3_3_0  Path.join(@fixtures, "magento_1.3.3.0")
-  @magento_root_1_4_0_0  Path.join(@fixtures, "magento_1.4.0.0")
-  @magento_root_1_7_0_2  Path.join(@fixtures, "magento_1.7.0.2")
+  @magento_root_1_0      Path.join(@fixtures, "magento/1.0")
+  @magento_root_1_3_3_0  Path.join(@fixtures, "magento/1.3.3.0")
+  @magento_root_1_4_0_0  Path.join(@fixtures, "magento/1.4.0.0")
+  @magento_root_1_7_0_2  Path.join(@fixtures, "magento/1.7.0.2")
   # Magento Enterprise Edition
-  @magento_root_1_13_0_0 Path.join(@fixtures, "magento_1.13.0.0")
+  @magento_root_1_13_0_0 Path.join(@fixtures, "magento/1.13.0.0")
 
   test "returns nil when not found" do
     {status, _} = Magento.Version.read_from(Path.join(__DIR__, "nope"))
