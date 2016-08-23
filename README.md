@@ -22,7 +22,11 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
     ```
 
-## Develop
+## Contributor Information
 
-    mix test.watch
-    mix test
+### Test it
+
+```sh
+mix test       # Run tests once
+mix test.watch # Run tests on file changes
+```
