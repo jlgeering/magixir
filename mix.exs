@@ -30,6 +30,7 @@ defmodule Magixir.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
+      {:credo, "~> 0.4", only: [:dev, :test]},
       {:ex_doc, "~> 0.13.0", only: :dev},
       {:mix_test_watch, "~> 0.2", only: :dev}
     ]

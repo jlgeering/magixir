@@ -29,4 +29,5 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 ```sh
 mix test       # Run tests once
 mix test.watch # Run tests on file changes
+mix credo      # Code linter
 ```
