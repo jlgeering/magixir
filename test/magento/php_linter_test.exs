@@ -1,16 +1,18 @@
 defmodule Magento.PhpLinterTest do
   use ExUnit.Case
-  doctest Magento.Version
+  doctest Magento.PhpLinter
+
+  alias Magento.PhpLinter, as: Mut
 
   @fixtures Path.join(__DIR__, "../fixtures")
 
   test "no warnings for valid files" do
-    files = Magento.PhpLinter.lint(Path.join(@fixtures, "magento"))
+    files = Mut.lint(Path.join(@fixtures, "magento"))
     assert files == []
   end
 
   test "find all files that do not start with <?php" do
-    files = Magento.PhpLinter.lint(Path.join(@fixtures, "php_linter"))
+    files = Mut.lint(Path.join(@fixtures, "php_linter"))
     expected = MapSet.new [
       "space.php",
       "a/space.php",
