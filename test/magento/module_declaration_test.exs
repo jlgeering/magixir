@@ -14,7 +14,11 @@ defmodule Magento.ModuleDeclarationTest do
     modules = Mut.load(Path.join(@fixtures, "magento_root/app/etc/modules/Mage_Api.xml"))
     assert Enum.count(modules) == 1
     module = List.first(modules)
-    assert %{name: :Mage_Api} = module
+    assert %Mut{
+      name: :Mage_Api,
+      active: true,
+      codePool: "core"
+    } = module
   end
 
   test "load multiple modules" do

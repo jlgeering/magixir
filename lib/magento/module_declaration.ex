@@ -1,6 +1,6 @@
 defmodule Magento.ModuleDeclaration do
 
-  defstruct name: nil, active: false
+  defstruct name: nil, active: false, codePool: nil
 
   import SweetXml
 
@@ -9,7 +9,12 @@ defmodule Magento.ModuleDeclaration do
   end
 
   def parse_declaration(e) do
-    %{ name: xmlElement(e, :name) }
+    name = xmlElement(e, :name)
+    %Magento.ModuleDeclaration{
+      name: name,
+      active: true,
+      codePool: "core"
+    }
   end
 
 end
