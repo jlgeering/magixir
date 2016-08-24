@@ -5,7 +5,7 @@ defmodule Magento.ModuleDeclaration do
   import SweetXml
 
   def load(file) do
-    File.read!(file) |> xpath(~x"//config/modules"l)
+    File.read!(file) |> xpath(~x"//config/modules/*"l)
   end
 
 end

@@ -15,4 +15,10 @@ defmodule Magento.ModuleDeclarationTest do
     assert Enum.count(modules) == 1
   end
 
+  test "load multiple modules" do
+    modules = Mut.load(Path.join(@fixtures, "magento_root/app/etc/modules/Mage_All.xml"))
+    assert Enum.count(modules) == 47
+  end
+
+
 end
