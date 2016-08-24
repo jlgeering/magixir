@@ -10,10 +10,11 @@ defmodule Magento.ModuleDeclaration do
 
   def parse_declaration(e) do
     name = xmlElement(e, :name)
+    active = ("true" == xpath(e,~x"./active/text()"s))
     %Magento.ModuleDeclaration{
       name: name,
-      active: true,
-      codePool: "core"
+      active: active,
+      codePool: xpath(e,~x"./codePool/text()"s)
     }
   end
 
