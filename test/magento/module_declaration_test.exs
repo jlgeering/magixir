@@ -7,8 +7,12 @@ defmodule Magento.ModuleDeclarationTest do
   @fixtures Path.join(__DIR__, "../fixtures")
 
   test "load non existant file" do
-    module_definition = Mut.load(Path.join(@fixtures, "not_found.xml"))
-    assert module_definition == nil
+    assert %File.Error{} = catch_error(Mut.load(Path.join(@fixtures, "not_found.xml")))
+  end
+
+  test "load single module" do
+    modules = Mut.load(Path.join(@fixtures, "magento_root/app/etc/modules/Mage_Api.xml"))
+    assert Enum.count(modules) == 1
   end
 
 end
