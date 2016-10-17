@@ -7,11 +7,11 @@ defmodule Magento.ModuleDeclarationTest do
   @fixtures Path.join(__DIR__, "../fixtures")
 
   test "load non existant file" do
-    assert %File.Error{} = catch_error(Mut.load(Path.join(@fixtures, "not_found.xml")))
+    assert %File.Error{} = catch_error(Mut.load_file(Path.join(@fixtures, "not_found.xml")))
   end
 
-  test "load single module" do
-    modules = Mut.load(Path.join(@fixtures, "magento_root/app/etc/modules/Mage_Api.xml"))
+  test "load single module (from 1 file)" do
+    modules = Mut.load_file(Path.join(@fixtures, "magento_root/app/etc/modules/Mage_Api.xml"))
     assert Enum.count(modules) == 1
     module = List.first(modules)
     assert %Mut{
@@ -21,10 +21,20 @@ defmodule Magento.ModuleDeclarationTest do
     } = module
   end
 
-  test "load multiple modules" do
-    modules = Mut.load(Path.join(@fixtures, "magento_root/app/etc/modules/Mage_All.xml"))
+  test "load multiple modules (from 1 file)" do
+    modules = Mut.load_file(Path.join(@fixtures, "magento_root/app/etc/modules/Mage_All.xml"))
     assert Enum.count(modules) == 47
   end
 
+  test "load all module declations (from 1 folder)" do
+    modules = Mut.load_folder(Path.join(@fixtures, "module_declarations/load_all"))
+    assert Enum.count(modules) == 5
+  end
+
+  test "sort module declarations (the magento way)" do
+    modules = Mut.load_folder(Path.join(@fixtures, "module_declarations/sorted"))
+
+    assert [:m1, :m2, :m3, :m4, :m5, :m6] = Enum.map(modules, &(Map.fetch!(&1, :name)))
+  end
 
 end

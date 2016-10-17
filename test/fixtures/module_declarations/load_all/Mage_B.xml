@@ -1,0 +1,7 @@
+<config>
+    <modules>
+        <Mage_B1></Mage_B1>
+        <Mage_B2></Mage_B2>
+        <Mage_B3></Mage_B3>
+    </modules>
+</config>
