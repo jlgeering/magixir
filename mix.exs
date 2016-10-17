@@ -31,7 +31,7 @@ defmodule Magixir.Mixfile do
   defp deps do
     [
       {:credo, "~> 0.4", only: [:dev, :test]},
-      {:ex_doc, "~> 0.13.0", only: :dev},
+      {:ex_doc, "~> 0.14.0", only: :dev},
       {:mix_test_watch, "~> 0.2", only: :dev},
       {:sweet_xml, "~> 0.6.1"},
     ]
