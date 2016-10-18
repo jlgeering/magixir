@@ -4,6 +4,12 @@ defmodule Magento.ModuleDeclaration do
 
   import SweetXml
 
+  def load(magento_root) do
+    magento_root
+    |> Path.join("app/etc/modules")
+    |> load_folder()
+  end
+
   def load_folder(folder) do
     folder
     |> Path.join("*.xml")
