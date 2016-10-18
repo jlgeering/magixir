@@ -8,6 +8,7 @@ defmodule Magento.ModuleDeclaration do
     magento_root
     |> Path.join("app/etc/modules")
     |> load_folder()
+    |> Enum.map(&(%{&1 | file: Path.relative_to(&1.file, magento_root)}))
   end
 
   def load_folder(folder) do
@@ -41,16 +42,17 @@ defmodule Magento.ModuleDeclaration do
     file
     |> File.read!()
     |> xpath(~x"//config/modules/*"l)
-    |> Enum.map(&parse_declaration/1)
+    |> Enum.map(&(parse_declaration(&1, file)))
   end
 
-  def parse_declaration(e) do
+  defp parse_declaration(e, file) do
     name = xmlElement(e, :name)
     active = ("true" == xpath(e,~x"./active/text()"s))
     %Magento.ModuleDeclaration{
       name: name,
       active: active,
-      codePool: xpath(e,~x"./codePool/text()"s)
+      codePool: xpath(e,~x"./codePool/text()"s),
+      file: file
     }
   end
 

@@ -11,13 +11,15 @@ defmodule Magento.ModuleDeclarationTest do
   end
 
   test "load single module (from 1 file)" do
-    modules = Mut.load_file(Path.join(@fixtures, "magento_root/app/etc/modules/Mage_Api.xml"))
+    file = Path.join(@fixtures, "magento_root/app/etc/modules/Mage_Api.xml")
+    modules = Mut.load_file(file)
     assert Enum.count(modules) == 1
     module = List.first(modules)
     assert %Mut{
       name: :Mage_Api,
       active: true,
-      codePool: "core"
+      codePool: "core",
+      file: file
     } = module
   end
 
