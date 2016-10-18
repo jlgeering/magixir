@@ -1,6 +1,6 @@
 defmodule Magento.ModuleDeclaration do
 
-  defstruct name: nil, active: false, codePool: nil
+  defstruct name: nil, active: false, codePool: nil, file: nil
 
   import SweetXml
 

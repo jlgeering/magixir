@@ -33,12 +33,21 @@ defmodule Magento.ModuleDeclarationTest do
 
   test "sort module declarations (the magento way)" do
     modules = Mut.load_folder(Path.join(@fixtures, "module_declarations/sorted"))
-    assert [:m1, :m2, :m3, :m4, :m5, :m6] = Enum.map(modules, &(Map.fetch!(&1, :name)))
+    assert [:m1, :m2, :m3, :m4, :m5, :m6] == Enum.map(modules, &(Map.fetch!(&1, :name)))
   end
 
   test "find the module declarations given magento_root" do
     modules = Mut.load(Path.join(@fixtures, "magento_root"))
     assert Enum.count(modules) > 0
+  end
+
+  test "module declarations file relative to magento_root" do
+    file = @fixtures
+      |> Path.join("magento_root")
+      |> Mut.load()
+      |> List.first()
+      |> Map.fetch!(:file)
+    assert "app/etc/modules/Mage_All.xml" == file
   end
 
 end
