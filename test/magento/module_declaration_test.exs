@@ -19,6 +19,7 @@ defmodule Magento.ModuleDeclarationTest do
       name: :Mage_Api,
       active: true,
       codePool: "core",
+      dependencies: [:Mage_Core],
       file: file
     } = module
   end

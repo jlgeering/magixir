@@ -1,6 +1,6 @@
 defmodule Magento.ModuleDeclaration do
 
-  defstruct name: nil, active: false, codePool: nil, file: nil
+  defstruct name: nil, active: false, codePool: nil, dependencies: nil, file: nil
 
   import SweetXml
 
@@ -46,13 +46,17 @@ defmodule Magento.ModuleDeclaration do
   end
 
   defp parse_declaration(e, file) do
-    name = xmlElement(e, :name)
-    active = ("true" == xpath(e,~x"./active/text()"s))
     %Magento.ModuleDeclaration{
-      name: name,
-      active: active,
-      codePool: xpath(e,~x"./codePool/text()"s),
-      file: file
+      name:
+        xmlElement(e, :name),
+      active:
+        ("true" == xpath(e,~x"./active/text()"s)),
+      codePool:
+        xpath(e,~x"./codePool/text()"s),
+      dependencies:
+        e |> xpath(~x"./depends/*"l) |> Enum.map(&(xmlElement(&1, :name))),
+      file:
+        file
     }
   end
 
