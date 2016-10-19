@@ -1,4 +1,7 @@
 defmodule Magento.ModuleDeclaration do
+  @moduledoc """
+  Provides a module-declaration struct and related loading and processing functions.
+  """
 
   defstruct name: nil, active: false, codePool: nil, dependencies: nil, file: nil
 
