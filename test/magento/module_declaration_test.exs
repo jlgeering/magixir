@@ -20,7 +20,7 @@ defmodule Magento.ModuleDeclarationTest do
       active: true,
       codePool: "core",
       dependencies: [:Mage_Core],
-      file: file
+      file: _
     } = module
   end
 
