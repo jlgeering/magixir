@@ -63,4 +63,27 @@ defmodule Magento.ModuleDeclaration do
     }
   end
 
+  # ======= processing =======
+
+  def sort(modules) do
+
+    # see https://rosettacode.org/wiki/Topological_sort#Elixir
+
+    g = :digraph.new
+
+    Enum.each(modules, fn module ->
+      :digraph.add_vertex(g, module.name)
+      Enum.each(module.dependencies, fn dependency ->
+        # should prevent loop (dependency == module.name) => new test case
+        :digraph.add_vertex(g, dependency) # noop if already added
+        :digraph.add_edge(g, dependency, module.name)
+      end)
+    end)
+
+    # should handle circular dependencies => new test case
+    sorted = :digraph_utils.topsort(g)
+
+    # bad performance!
+    Enum.sort_by modules, fn module -> Enum.find_index(sorted, &(&1 == module.name)) end
+  end
 end

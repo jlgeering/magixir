@@ -53,4 +53,59 @@ defmodule Magento.ModuleDeclarationTest do
     assert "app/etc/modules/Mage_All.xml" == file
   end
 
+  test "sort preserves order when no dependencies" do
+    unsorted = [
+      %Mut{name: :A, dependencies: []},
+      %Mut{name: :B, dependencies: []}
+    ]
+
+    sorted = unsorted
+      |> Mut.sort()
+      |> Enum.map(&(&1.name))
+
+    assert [:A, :B] == sorted
+  end
+
+  test "sort with 1 dependency" do
+    unsorted = [
+      %Mut{name: :A, dependencies: [:B]},
+      %Mut{name: :B, dependencies: []}
+    ]
+
+    sorted = unsorted
+      |> Mut.sort()
+      |> Enum.map(&(&1.name))
+
+    assert [:B, :A] == sorted
+  end
+
+  test "sort with more dependencies" do
+    unsorted = [
+      %Mut{name: :A, dependencies: [:B, :C]},
+      %Mut{name: :B, dependencies: []},
+      %Mut{name: :C, dependencies: []}
+    ]
+
+    sorted = unsorted
+      |> Mut.sort()
+      |> Enum.map(&(&1.name))
+
+    assert [:B, :C, :A] == sorted
+  end
+
+  test "sort with transitive dependencies" do
+    unsorted = [
+      %Mut{name: :A, dependencies: [:C]},
+      %Mut{name: :B, dependencies: []},
+      %Mut{name: :C, dependencies: []},
+      %Mut{name: :D, dependencies: []}
+    ]
+
+    sorted = unsorted
+      |> Mut.sort()
+      |> Enum.map(&(&1.name))
+
+    assert sorted == [:B, :C, :A, :D]
+  end
+
 end
