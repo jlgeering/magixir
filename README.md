@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jlgeering/magixir.svg?branch=master)](https://travis-ci.org/jlgeering/magixir)
+
 # Magixir
 
 **TODO: Add description**
