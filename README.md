@@ -33,3 +33,8 @@ mix test       # Run tests once
 mix test.watch # Run tests on file changes
 mix credo      # Code linter
 ```
+
+## See Also
+
+* Version 1, in Ruby: [maruto](https://github.com/jlgeering/maruto)
+* Version 2, in Clojure: [clojento](https://github.com/jlgeering/clojento)
