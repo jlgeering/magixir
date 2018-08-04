@@ -3,7 +3,7 @@ defmodule Magixir.Mixfile do
 
   def project do
     [app: :magixir,
-     version: "0.1.0",
+     version: "0.1.1",
      elixir: "~> 1.2",
      description: description(),
      package: package(),
@@ -47,7 +47,10 @@ defmodule Magixir.Mixfile do
     [
       licenses:    ["MIT"],
       maintainers: ["Jean-Luc Geering"],
-      links:       %{"GitHub" => "https://github.com/jlgeering/magixir" }
+      links:       %{
+        "Changelog" => "https://github.com/jlgeering/magixir/blob/master/CHANGELOG.md",
+        "GitHub" => "https://github.com/jlgeering/magixir"
+      }
     ]
   end
 end
