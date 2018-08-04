@@ -2,7 +2,7 @@
 
 # Magixir
 
-**TODO: Add description**
+**WIP do not use**
 
 ## Installation
 
