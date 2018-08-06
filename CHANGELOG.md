@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - add changelog page to generated doc
 
+### Fixed
+- compiler warnings
+
 ## [0.1.1] - 2018-08-04
 
 ### Changed
