@@ -5,7 +5,7 @@ defmodule Magixir.Mixfile do
     [
       app: :magixir,
       version: "0.1.2",
-      elixir: "~> 1.4.5",
+      elixir: "~> 1.4",
       description: description(),
       package: package(),
       build_embedded: Mix.env == :prod,
