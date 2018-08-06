@@ -2,14 +2,16 @@ defmodule Magixir.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :magixir,
-     version: "0.1.1",
-     elixir: "~> 1.2",
-     description: description(),
-     package: package(),
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :magixir,
+      version: "0.1.1",
+      elixir: "~> 1.2",
+      description: description(),
+      package: package(),
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      deps: deps(),
+    ]
   end
 
   # Configuration for the OTP application
@@ -49,8 +51,8 @@ defmodule Magixir.Mixfile do
       maintainers: ["Jean-Luc Geering"],
       links:       %{
         "Changelog" => "https://github.com/jlgeering/magixir/blob/master/CHANGELOG.md",
-        "GitHub" => "https://github.com/jlgeering/magixir"
-      }
+        "GitHub" => "https://github.com/jlgeering/magixir",
+      },
     ]
   end
 end
