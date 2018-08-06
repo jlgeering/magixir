@@ -1,5 +1,7 @@
 language: elixir
 
+before_script: kerl list installations
+
 matrix:
   include:
     - otp_release: 18.3.4.9
