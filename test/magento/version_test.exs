@@ -20,22 +20,23 @@ defmodule Magento.VersionTest do
   end
   test "reads version 1.0" do
     {:ok, version} = Mut.read_from(@magento_root_1_0)
-    assert version == [1,0]
+    assert version == [1, 0]
   end
   test "reads version 1.3.3.0" do
       {:ok, version} = Mut.read_from(@magento_root_1_3_3_0)
-      assert version == [1,3,3,0]
+      assert version == [1, 3, 3, 0]
   end
   test "reads version 1.4.0.0" do
     {:ok, version} = Mut.read_from(@magento_root_1_4_0_0)
-    assert version == [1,4,0,0]
+    assert version == [1, 4, 0, 0]
   end
   test "reads version 1.7.0.2" do
     {:ok, version} = Mut.read_from(@magento_root_1_7_0_2)
-    assert version == [1,7,0,2]
+    assert version == [1, 7, 0, 2]
   end
   test "reads version 1.13.0.0" do
     {:ok, version} = Mut.read_from(@magento_root_1_13_0_0)
-    assert version == [1,13,0,0]
+    assert version == [1, 13, 0, 0]
   end
+
 end

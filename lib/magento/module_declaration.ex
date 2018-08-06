@@ -53,9 +53,9 @@ defmodule Magento.ModuleDeclaration do
       name:
         xmlElement(e, :name),
       active:
-        ("true" == xpath(e,~x"./active/text()"s)),
+        ("true" == xpath(e, ~x"./active/text()"s)),
       codePool:
-        xpath(e,~x"./codePool/text()"s),
+        xpath(e, ~x"./codePool/text()"s),
       dependencies:
         e |> xpath(~x"./depends/*"l) |> Enum.map(&(xmlElement(&1, :name))),
       file:

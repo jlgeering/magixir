@@ -19,7 +19,7 @@ defmodule Magento.ModuleConfiguration do
       name:
         xmlElement(e, :name),
       version:
-        xpath(e,~x"./version/text()"s),
+        xpath(e, ~x"./version/text()"s),
       file:
         file
     }

@@ -1,4 +1,7 @@
 defmodule Magento.PhpLinter do
+  @moduledoc """
+  Minimal PHP Linter.
+  """
 
   # Warning: this is very super slow
   def lint(magento_root) do

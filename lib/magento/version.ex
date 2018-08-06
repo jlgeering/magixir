@@ -1,4 +1,7 @@
 defmodule Magento.Version do
+  @moduledoc """
+  Extracts Magento version from app/Mage.php.
+  """
 
   def read_from(magento_root) do
     mage_php = Path.join(magento_root, "app/Mage.php")
